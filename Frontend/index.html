@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Bryan</title>
+    <!-- Jalur sesuai dengan route baru di app.py -->
+    <link rel="stylesheet" href="/Frontend/utama/css/style.css">
+    <!-- Wajib buat nampilin icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">Bryan.</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#projects">Proyek</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- TEMPAT FOTO LU NONGOL -->
+            <img id="hero-foto" src="" alt="Foto Profil" style="width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 5px solid #ee4d2d; box-shadow: 0 10px 25px rgba(238, 77, 45, 0.2); margin-bottom: 25px; display: none;">
+            
+            <h4>Halo, perkenalkan saya</h4>
+            <h1 id="nama-user">Loading...</h1>
+            <p id="prodi-user">Mahasiswa S1 Sistem Informasi yang punya passion di bidang pengembangan perangkat lunak dan manajemen basis data.</p>
+            <a href="#projects" class="btn">Lihat Proyek Saya</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-white">
+        <h2 class="section-title">Keahlian Utama</h2>
+        <div class="skills-grid" id="skills-container">
+            <p class="loading-skeleton">Loading skills...</p>
+        </div>
+    </section>
+
+    <!-- Experience Section (Format Timeline) -->
+    <section id="experience">
+        <h2 class="section-title">Riwayat Pengalaman</h2>
+        <div class="timeline" id="experience-container">
+            <p class="loading-skeleton">Loading experiences...</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-white">
+        <h2 class="section-title">Proyek Portofolio</h2>
+        <div class="projects-grid" id="projects-container">
+            <p class="loading-skeleton">Loading projects...</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <div class="contact-container">
+            <p>Punya tawaran kolaborasi atau project freelance? Kirim pesan langsung ke email saya.</p>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                <input type="email" id="email" placeholder="Alamat Email" required>
+                <textarea id="pesan" placeholder="Tulis pesan detailnya di sini..." required></textarea>
+                <button class="btn" type="submit" id="btn-kirim">Kirim Pesan Sekarang 🚀</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bryan - Dibuat sambil nunggu orderan Shopee Food.</p>
+    </footer>
+
+    <script src="/Frontend/utama/js/script.js"></script>
+</body>
+</html>
