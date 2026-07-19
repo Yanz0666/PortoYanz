@@ -9,17 +9,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 2. Ambil data statistik dari backend
+    // ... kode sebelumnya ...
     try {
-        const response = await fetch('/api/dashboard/stats', {
+        // PAKE BASE_URL BIAR TEMBAKNYA KE RAILWAY
+        const response = await fetch(`${BASE_URL}/api/dashboard/stats`, {
             method: 'GET',
             headers: {
-                // Sesuai sama backend lu, wajib pakai Bearer Token
                 'Authorization': `Bearer ${token}`, 
                 'Content-Type': 'application/json'
             }
         });
 
+        if (!response.ok) throw new Error("Gagal fetch");
+        
         const result = await response.json();
+// ... sisanya sama ...
 
         // Kalau token kadaluarsa atau ga valid, tendang lagi
         if (response.status === 401) {
