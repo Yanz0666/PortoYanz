@@ -19,13 +19,20 @@ def create_app():
                 template_folder='.')
     
     app.config.from_object(Config)
-    # Ganti dengan domain Vercel lu nanti
+    
+    # CORS Config
     CORS(app, resources={r"/api/*": {
         "origins": [
             "https://porto-yanz.vercel.app", 
             "https://portofolio-bryan-production.up.railway.app"
         ]
     }}, supports_credentials=True)
+
+    # FIX: Handle Preflight Request (OPTIONS) biar nggak kena cek auth
+    @app.before_request
+    def handle_options():
+        if request.method == 'OPTIONS':
+            return '', 200
     
     # Register blueprints
     app.register_blueprint(login_bp, url_prefix='/api')
@@ -37,7 +44,7 @@ def create_app():
     app.register_blueprint(upload_bp, url_prefix='/api')
     app.register_blueprint(utama_bp, url_prefix='/api')
     
-    # --- ROUTING FRONTEND (Pintu Masuk) ---
+    # --- ROUTING FRONTEND (Pintu Masuk) ---[cite: 6]
     @app.route('/')
     def index():
         return send_from_directory(os.path.join(app.root_path, 'Frontend', 'utama'), 'index.html')
@@ -57,11 +64,28 @@ def create_app():
     @app.route('/admin/skills')
     def admin_skills():
         return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), 'skills.html')
+        
+    @app.route('/admin/experience')
+    def admin_experience():
+        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), 'experience.html')
+    
+    @app.route('/admin/projects')
+    def admin_projects():
+        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), 'projects.html')
 
     # Route untuk ngebaca CSS/JS admin
     @app.route('/admin/<path:filename>')
     def admin_pages(filename):
         return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), filename)
+    
+    # Route buat CSS/JS global
+    @app.route('/css/<path:filename>')
+    def css_static(filename):
+        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'css'), filename)
+
+    @app.route('/js/<path:filename>')
+    def js_static(filename):
+        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'js'), filename)
     
     @app.route('/favicon.ico')
     def favicon():
@@ -71,14 +95,6 @@ def create_app():
     def not_found(error):
         return jsonify({'error': 'Route tidak ditemukan. Cek lagi URL lu bro!'}), 404
     
-    @app.route('/admin/experience')
-    def admin_experience():
-        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), 'experience.html')
-    
-    @app.route('/admin/projects')
-    def admin_projects():
-        return send_from_directory(os.path.join(app.root_path, 'Frontend', 'admin'), 'projects.html')
-    
     @app.route('/Frontend/utama/<path:filename>')
     def utama_static(filename):
         return send_from_directory(os.path.join(app.root_path, 'Frontend', 'utama'), filename)
@@ -86,6 +102,6 @@ def create_app():
     return app
 
 if __name__ == '__main__':
-    app = create_app()  # <--- Panggil fungsinya dulu biar dapet variabel 'app'-nya!
+    app = create_app()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
