@@ -1,5 +1,10 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "/admin/login.html" }
+    { "source": "/admin", "destination": "/admin/login.html" },
+    { "source": "/admin/dashboard", "destination": "/admin/dashboard.html" },
+    { "source": "/admin/profiles", "destination": "/admin/profiles.html" },
+    { "source": "/admin/skills", "destination": "/admin/skills.html" },
+    { "source": "/admin/experience", "destination": "/admin/experience.html" },
+    { "source": "/admin/projects", "destination": "/admin/projects.html" }
   ]
 }
