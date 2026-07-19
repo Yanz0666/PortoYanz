@@ -1,3 +1,4 @@
+const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. CEK TOKEN: Kalau ga ada token di localStorage, tendang balik ke login!
     const token = localStorage.getItem('token');
