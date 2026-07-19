@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Skills - Admin Portofolio</title>
+    <link rel="stylesheet" href="/admin/css/skills.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigasi -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="/admin/dashboard">🏠 Dashboard</a>
+        <a href="/admin/profiles">👤 Kelola Profil</a>
+        <a href="/admin/skills" class="active">⚡ Kelola Skills</a>
+        <a href="/admin/experience">💼 Kelola Pengalaman</a>
+        <a href="/admin/projects">🚀 Kelola Proyek</a>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <div class="header">
+            <h2>Kelola Keahlian (Skills)</h2>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="grid-layout">
+            <!-- Form Tambah Skill -->
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>Tambah Skill Baru</h3>
+                    <p>Masukin keahlian programming atau *soft skill* lu.</p>
+                </div>
+                <form id="skillForm">
+                    <div class="input-group">
+                        <label>Nama Skill (Contoh: Python, Oracle SQL)</label>
+                        <input type="text" id="nama_skill" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Icon Class (Opsional, cth: fa-brands fa-python)</label>
+                        <input type="text" id="icon_class">
+                    </div>
+                    <button type="submit" id="saveBtn">Tambah Skill ➕</button>
+                    <p id="statusMsg"></p>
+                </form>
+            </div>
+
+            <!-- Daftar Skill (Tabel) -->
+            <div class="list-card">
+                <div class="form-header">
+                    <h3>Daftar Skill Saya</h3>
+                </div>
+                <div class="table-responsive">
+                    <table id="skillsTable">
+                        <thead>
+                            <tr>
+                                <th>Nama Skill</th>
+                                <th>Icon</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="skillsBody">
+                            <tr><td colspan="3" style="text-align: center;">Loading data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/admin/js/skills.js"></script>
+</body>
+</html>

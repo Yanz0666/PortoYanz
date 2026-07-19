@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Profil - Admin Portofolio</title>
+    <!-- CSS Utama Tema Shopee -->
+    <link rel="stylesheet" href="/admin/css/profiles.css">
+    <!-- Font Kekinian -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Sidebar Navigasi -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="/admin/dashboard">🏠 Dashboard</a>
+        <a href="/admin/profiles" class="active">👤 Kelola Profil</a>
+        <a href="/admin/skills">⚡ Kelola Skills</a>
+        <a href="/admin/experience">💼 Kelola Pengalaman</a>
+        <a href="/admin/projects">🚀 Kelola Proyek</a>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <div class="header">
+            <h2>Kelola Data Profil</h2>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="form-card">
+            <div class="form-header">
+                <h3>Update Identitas Portofolio</h3>
+                <p>Pastikan data lu valid biar HRD atau klien pada ngelirik.</p>
+            </div>
+            
+            <form id="profilForm">
+                <div class="grid-form">
+                    <div class="input-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="nama_lengkap" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Nama Panggilan</label>
+                        <input type="text" id="nama_panggilan">
+                    </div>
+                    <div class="input-group">
+                        <label>Email Utama</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Nomor WhatsApp/Telepon</label>
+                        <input type="text" id="telepon">
+                    </div>
+                    <div class="input-group">
+                        <label>Universitas</label>
+                        <input type="text" id="universitas">
+                    </div>
+                    <div class="input-group">
+                        <label>Program Studi</label>
+                        <input type="text" id="prodi">
+                    </div>
+
+                    <!-- BARU: Input Foto Profil Cloudinary -->
+                    <div class="input-group full-width" style="background: #fafafa; padding: 15px; border-radius: 8px; border: 1px dashed #ee4d2d;">
+                        <label>Foto Profil (Upload langsung ke Cloudinary)</label>
+                        <input type="file" id="uploadFoto" accept="image/*" style="margin-bottom: 10px;">
+                        <input type="text" id="foto_url" placeholder="Nanti link Cloudinary otomatis muncul di sini..." readonly style="background: #eee; color: #555;">
+                        <img id="previewFoto" src="" alt="Preview Foto" style="max-width: 150px; display: none; margin-top: 15px; border-radius: 8px; border: 2px solid #ee4d2d;">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Alamat Domisili</label>
+                        <textarea id="alamat" rows="3"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-action">
+                    <button type="submit" id="saveBtn">Simpan Profil 🚀</button>
+                    <p id="statusMsg"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/admin/js/profiles.js"></script>
+</body>
+</html>

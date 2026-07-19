@@ -1,0 +1,104 @@
+body { 
+    margin: 0; 
+    font-family: 'Nunito', sans-serif; 
+    display: flex; 
+    background-color: #f5f5f5; 
+}
+
+/* Sidebar Tema Shopee */
+.sidebar { 
+    width: 260px; 
+    background: #ee4d2d; 
+    color: white; 
+    min-height: 100vh; 
+    padding-top: 25px; 
+    box-shadow: 3px 0 15px rgba(0,0,0,0.1); 
+    position: fixed;
+}
+.sidebar h2 { text-align: center; margin-bottom: 35px; font-weight: 800; font-style: italic; letter-spacing: 1px; font-size: 24px;}
+.sidebar a { display: block; color: rgba(255,255,255,0.9); padding: 16px 25px; text-decoration: none; border-bottom: 1px solid #ff7337; font-weight: 600; transition: all 0.3s; }
+.sidebar a:hover, .sidebar a.active { background: #d73d1f; padding-left: 32px; color: white; border-left: 5px solid #ffffff;}
+
+/* Konten Utama */
+.content { 
+    margin-left: 260px; 
+    flex: 1; 
+    padding: 35px; 
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
+/* Header Keren */
+.header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 18px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-radius: 12px; margin-bottom: 30px; border-left: 6px solid #ee4d2d; }
+.header h2 { margin: 0; color: #222; font-size: 22px; font-weight: 800;}
+button#logoutBtn { background: #fff1f1; color: #ee4d2d; border: 2px solid #ee4d2d; padding: 10px 24px; cursor: pointer; border-radius: 8px; font-weight: 800; transition: 0.3s; }
+button#logoutBtn:hover { background: #ee4d2d; color: white; }
+
+/* Form Card Super Rapi */
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.form-header {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #f0f0f0;
+    padding-bottom: 20px;
+}
+.form-header h3 { margin: 0 0 8px 0; color: #ee4d2d; font-size: 24px; font-weight: 800;}
+.form-header p { margin: 0; color: #888; font-size: 15px;}
+
+/* Grid Input Kekinian */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.input-group.full-width { grid-column: span 2; }
+
+.input-group label { display: block; margin-bottom: 8px; color: #444; font-weight: 700; font-size: 14px; }
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+.input-group input:focus, .input-group textarea:focus {
+    border-color: #ee4d2d;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.1);
+}
+
+/* Area Action Form */
+.form-action {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+button#saveBtn {
+    background: linear-gradient(135deg, #ff7337, #ee4d2d);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(238, 77, 45, 0.25);
+    transition: all 0.3s ease;
+}
+button#saveBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(238, 77, 45, 0.35); }
+button#saveBtn:active { transform: translateY(1px); }
+
+#statusMsg { font-weight: 700; font-size: 15px; margin: 0; padding: 12px 20px; border-radius: 8px;}
+#statusMsg.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;}
+#statusMsg.error { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2;}

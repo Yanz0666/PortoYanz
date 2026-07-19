@@ -1,0 +1,158 @@
+/* Import Font kekinian biar gak kaku */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    /* Gradasi soft khas Shopee (putih ke oranye pudar) */
+    background: linear-gradient(135deg, #fdfbfa 0%, #ffe3d8 100%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Dekorasi background biar "Wow" dan gak sepi */
+body::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #ff7337, #ee4d2d);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    opacity: 0.15;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ff4500;
+    border-radius: 50%;
+    bottom: -50px;
+    right: -50px;
+    opacity: 0.1;
+    z-index: -1;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Animasi background ngambang */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Sedikit transparan efek kaca */
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 24px; /* Lebih membulat kekinian */
+    box-shadow: 0 15px 35px rgba(238, 77, 45, 0.15), 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 420px; 
+    box-sizing: border-box;
+    /* Animasi pas halaman dibuka */
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Keyframe untuk card login muncul */
+@keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #ee4d2d; /* Oranye Shopee */
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ffe3d8;
+    border-radius: 12px; /* Input lebih bulat */
+    box-sizing: border-box; 
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    font-family: 'Nunito', sans-serif;
+}
+
+.input-group input:focus {
+    border-color: #ee4d2d;
+    background-color: #ffffff;
+    outline: none;
+    /* Efek glow oranye pas ngetik */
+    box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.15); 
+}
+
+button#loginBtn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff7337, #ee4d2d); /* Gradasi tombol */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(238, 77, 45, 0.3);
+}
+
+button#loginBtn:hover {
+    transform: translateY(-2px); /* Tombol naik dikit pas dihover */
+    box-shadow: 0 10px 25px rgba(238, 77, 45, 0.4);
+}
+
+button#loginBtn:active {
+    transform: translateY(1px);
+}
+
+#errorMsg {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #fff0f0;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+    /* Efek getar kalau login gagal */
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Animasi error */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

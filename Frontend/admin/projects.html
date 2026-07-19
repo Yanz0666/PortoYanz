@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Proyek - Admin Portofolio</title>
+    <link rel="stylesheet" href="/admin/css/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="/admin/dashboard">🏠 Dashboard</a>
+        <a href="/admin/profiles">👤 Kelola Profil</a>
+        <a href="/admin/skills">⚡ Kelola Skills</a>
+        <a href="/admin/experience">💼 Kelola Pengalaman</a>
+        <a href="/admin/projects" class="active">🚀 Kelola Proyek</a>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h2>Kelola Proyek</h2>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="grid-layout">
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>Tambah Proyek Baru</h3>
+                    <p>Pamerin proyek S1 Sistem Informasi lu di sini.</p>
+                </div>
+                <form id="projectForm">
+                    <div class="input-group">
+                        <label>Judul Proyek</label>
+                        <input type="text" id="judul" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Deskripsi</label>
+                        <textarea id="deskripsi" rows="3" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Link Gambar (URL Cloudinary)</label>
+                        <input type="text" id="gambar_url" placeholder="https://res.cloudinary.com/...">
+                    </div>
+                    <div class="input-group">
+                        <label>Link Proyek (Repo/Demo)</label>
+                        <input type="text" id="link_project" placeholder="https://github.com/...">
+                    </div>
+                    <button type="submit" id="saveBtn">Tambah Proyek 🚀</button>
+                    <p id="statusMsg"></p>
+                </form>
+            </div>
+
+            <div class="list-card">
+                <div class="form-header"><h3>Daftar Proyek</h3></div>
+                <div class="project-list" id="projectList">
+                    <p>Loading proyek...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/admin/js/projects.js"></script>
+</body>
+</html>

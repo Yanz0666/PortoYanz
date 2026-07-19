@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Pengalaman - Admin Portofolio</title>
+    <link rel="stylesheet" href="/admin/css/experience.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigasi -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="/admin/dashboard">🏠 Dashboard</a>
+        <a href="/admin/profiles">👤 Kelola Profil</a>
+        <a href="/admin/skills">⚡ Kelola Skills</a>
+        <a href="/admin/experience" class="active">💼 Kelola Pengalaman</a>
+        <a href="/admin/projects">🚀 Kelola Proyek</a>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <div class="header">
+            <h2>Kelola Pengalaman Kerja</h2>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="grid-layout">
+            <!-- Form Tambah Pengalaman -->
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>Tambah Pengalaman</h3>
+                    <p>Masukin riwayat asdos, magang, atau kerja lu di sini.</p>
+                </div>
+                <form id="experienceForm">
+                    <div class="input-group">
+                        <label>Posisi (Jabatan)</label>
+                        <input type="text" id="posisi" placeholder="Contoh: Asisten Dosen PBO" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Perusahaan / Institusi</label>
+                        <input type="text" id="perusahaan" placeholder="Contoh: UKSW" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Durasi</label>
+                        <input type="text" id="durasi" placeholder="Contoh: Jan 2025 - Sekarang" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Deskripsi (Opsional)</label>
+                        <textarea id="deskripsi" rows="4" placeholder="Jelasin jobdesc lu ngapain aja..."></textarea>
+                    </div>
+                    <button type="submit" id="saveBtn">Tambah Pengalaman ➕</button>
+                    <p id="statusMsg"></p>
+                </form>
+            </div>
+
+            <!-- Daftar Pengalaman -->
+            <div class="list-card">
+                <div class="form-header">
+                    <h3>Daftar Pengalaman Saya</h3>
+                </div>
+                <div class="experience-list" id="experienceList">
+                    <p style="text-align: center;">Loading data...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/admin/js/experience.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Portofolio</title>
+    <!-- Jalur CSS yang bener dan langsung nembak route admin -->
+    <link rel="stylesheet" href="/admin/css/login.css"> 
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Admin</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" id="loginBtn">Masuk</button>
+            <p id="errorMsg" style="color: red; display: none;"></p>
+        </form>
+    </div>
+
+    <!-- Jalur JS yang bener -->
+    <script src="/admin/js/login.js"></script>
+</body>
+</html>
