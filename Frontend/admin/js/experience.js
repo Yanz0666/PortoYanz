@@ -1,4 +1,5 @@
 const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
+
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -12,11 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadExperiences() {
     const listContainer = document.getElementById('experienceList');
     try {
-        // Ganti jadi:
-    const response = await fetch(`${BASE_URL}/api/experiences`, {
-        method: 'GET',
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-    });
+        const response = await fetch(`${BASE_URL}/api/experiences`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
         const result = await response.json();
 
         listContainer.innerHTML = ''; 
@@ -64,7 +64,8 @@ document.getElementById('experienceForm').addEventListener('submit', async (e) =
     };
 
     try {
-        const response = await fetch('/api/experiences', {
+        // PERBAIKAN: Pake backtick dan BASE_URL
+        const response = await fetch(`${BASE_URL}/api/experiences`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,7 +101,8 @@ async function deleteExperience(id) {
     
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`/api/experiences/${id}`, {
+        // PERBAIKAN: Pake backtick dan BASE_URL
+        const response = await fetch(`${BASE_URL}/api/experiences/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
