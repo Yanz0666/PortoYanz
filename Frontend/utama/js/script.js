@@ -1,5 +1,5 @@
 // Bikin variabel BASE_URL biar lu nggak capek ngetik berulang-ulang
-const BASE_URL = 'https://portofolio-bryan-production.up.railway.app'
+const BASE_URL = '/api'
 
 document.addEventListener('DOMContentLoaded', () => {
     loadProfile(); // Ini yang baru ditambahin

@@ -20,7 +20,12 @@ def create_app():
     
     app.config.from_object(Config)
     # Ganti dengan domain Vercel lu nanti
-    CORS(app, resources={r"/api/*": {"origins": ["https://portofolio-bryan.vercel.app"]}}, supports_credentials=True)
+    CORS(app, resources={r"/api/*": {
+    "origins": [
+        "https://portofolio-bryan.vercel.app", 
+        "https://portofolio-bryan-production.up.railway.app"
+        ]
+    }}, supports_credentials=True)
     
     # Register blueprints
     app.register_blueprint(login_bp, url_prefix='/api')
