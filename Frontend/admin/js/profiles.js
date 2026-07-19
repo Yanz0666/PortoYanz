@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 1. Tarik Data Profil Saat Halaman Dibuka
     try {
-        const response = await fetch('/api/profiles', {
+        // Ganti jadi:
+        const response = await fetch(`${BASE_URL}/api/profiles`, { 
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${token}` }
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
 
         const result = await response.json();

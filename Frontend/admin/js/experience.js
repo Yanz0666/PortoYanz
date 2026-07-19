@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadExperiences() {
     const listContainer = document.getElementById('experienceList');
     try {
-        const response = await fetch('/api/experiences');
+        // Ganti jadi:
+        const response = await fetch(`${BASE_URL}/api/experience`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
         const result = await response.json();
 
         listContainer.innerHTML = ''; 

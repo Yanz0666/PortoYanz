@@ -6,7 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadProjects() {
     const listContainer = document.getElementById('projectList');
-    const response = await fetch('/api/projects');
+    // Ganti jadi:
+        const response = await fetch(`${BASE_URL}/api/projects`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        });
     const result = await response.json();
     listContainer.innerHTML = '';
 
