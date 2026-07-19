@@ -1,0 +1,120 @@
+/* --- Global Reset & Body --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* --- Sidebar Oranye Shopee --- */
+.sidebar {
+    width: 250px;
+    background: #ee4d2d;
+    color: white;
+    min-height: 100vh;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #ff7337;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #d73d1f;
+    padding-left: 25px;
+}
+
+/* --- Area Konten --- */
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 5px solid #ee4d2d;
+}
+
+.header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+/* --- Kartu Statistik --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 3px solid #ee4d2d;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: #757575;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-card p {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ee4d2d;
+    margin: 15px 0 0;
+}
+
+/* --- Tombol & Utilities --- */
+button#logoutBtn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button#logoutBtn:hover {
+    background: #000;
+}
