@@ -1,4 +1,5 @@
 const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
+
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -12,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadSkills() {
     const tbody = document.getElementById('skillsBody');
     try {
-        // Ganti jadi:
         const response = await fetch(`${BASE_URL}/api/skills`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
@@ -61,7 +61,8 @@ document.getElementById('skillForm').addEventListener('submit', async (e) => {
     };
 
     try {
-        const response = await fetch('/api/skills', {
+        // PERBAIKAN: Pake backtick dan BASE_URL
+        const response = await fetch(`${BASE_URL}/api/skills`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ document.getElementById('skillForm').addEventListener('submit', async (e) => {
             statusMsg.innerText = "Skill berhasil ditambahkan!";
             statusMsg.className = "success";
             document.getElementById('skillForm').reset();
-            loadSkills(); // Refresh tabel otomatis
+            loadSkills(); 
         } else {
             statusMsg.innerText = result.error || "Gagal menambah skill.";
             statusMsg.className = "error";
@@ -87,7 +88,7 @@ document.getElementById('skillForm').addEventListener('submit', async (e) => {
     } finally {
         saveBtn.innerText = "Tambah Skill ➕";
         saveBtn.disabled = false;
-        setTimeout(() => { statusMsg.innerText = ""; }, 3000); // Hilang otomatis
+        setTimeout(() => { statusMsg.innerText = ""; }, 3000);
     }
 });
 
@@ -97,13 +98,14 @@ async function deleteSkill(id) {
     
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`/api/skills/${id}`, {
+        // PERBAIKAN: Pake backtick dan BASE_URL
+        const response = await fetch(`${BASE_URL}/api/skills/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
         if (response.ok) {
-            loadSkills(); // Refresh tabel kalau sukses
+            loadSkills();
         } else {
             alert('Gagal menghapus skill');
         }
