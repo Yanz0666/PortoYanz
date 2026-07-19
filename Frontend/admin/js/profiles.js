@@ -1,4 +1,5 @@
 const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
+
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -8,7 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 1. Tarik Data Profil Saat Halaman Dibuka
     try {
-        const response = await fetch('${BASE_URL}/api/profiles', {
+        // PERBAIKAN: Menggunakan backtick ( ` ) agar variabel terbaca
+        const response = await fetch(`${BASE_URL}/api/profiles`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -49,7 +51,6 @@ document.getElementById('uploadFoto').addEventListener('change', async function(
     if (!file) return;
 
     const formData = new FormData();
-    // PERHATIAN: Pastikan parameter 'file' ini sama dengan yang dicari di upload.py
     formData.append('file', file); 
 
     const token = localStorage.getItem('token');
@@ -60,11 +61,11 @@ document.getElementById('uploadFoto').addEventListener('change', async function(
     previewImg.style.display = 'none';
 
     try {
-        const response = await fetch('/api/upload', {
+        // PERBAIKAN: Menggunakan backtick dan BASE_URL
+        const response = await fetch(`${BASE_URL}/api/upload`, {
             method: 'POST',
             headers: { 
                 'Authorization': `Bearer ${token}` 
-
             },
             body: formData
         });
@@ -107,13 +108,13 @@ document.getElementById('profilForm').addEventListener('submit', async (e) => {
         universitas: document.getElementById('universitas').value,
         prodi: document.getElementById('prodi').value,
         alamat: document.getElementById('alamat').value,
-        // BARU: Ikut sertakan foto_url pas dikirim ke backend
         foto_url: document.getElementById('foto_url').value
     };
 
     try {
+        // PERBAIKAN: Menggunakan backtick
         const response = await fetch(`${BASE_URL}/api/profiles`, {
-            method: 'POST', // atau 'GET', sesuaikan
+            method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
