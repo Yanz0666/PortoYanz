@@ -1,3 +1,4 @@
+const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
