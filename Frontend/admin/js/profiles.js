@@ -8,10 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 1. Tarik Data Profil Saat Halaman Dibuka
     try {
-        // Ganti jadi:
-        const response = await fetch(`${BASE_URL}/api/profiles`, { 
+        const response = await fetch('${BASE_URL}/api/profiles', {
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+            headers: { 'Authorization': `Bearer ${token}` }
         });
 
         const result = await response.json();
@@ -113,8 +112,8 @@ document.getElementById('profilForm').addEventListener('submit', async (e) => {
     };
 
     try {
-        const response = await fetch('/api/profiles', {
-            method: 'POST',
+        const response = await fetch(`${BASE_URL}/api/profiles`, {
+            method: 'POST', // atau 'GET', sesuaikan
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
