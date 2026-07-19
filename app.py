@@ -21,9 +21,9 @@ def create_app():
     app.config.from_object(Config)
     # Ganti dengan domain Vercel lu nanti
     CORS(app, resources={r"/api/*": {
-    "origins": [
-        "https://portofolio-bryan.vercel.app", 
-        "https://portofolio-bryan-production.up.railway.app"
+        "origins": [
+            "https://porto-yanz.vercel.app", 
+            "https://portofolio-bryan-production.up.railway.app"
         ]
     }}, supports_credentials=True)
     
