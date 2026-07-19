@@ -1,104 +1,48 @@
 const BASE_URL = 'https://portofolio-bryan-production.up.railway.app';
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('token')) { window.location.href = '/admin'; return; }
-    loadProjects();
-});
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/admin';
+        return;
+    }
 
-async function loadProjects() {
-    const listContainer = document.getElementById('projectList');
+    // Ambil data statistik dari backend
     try {
-        // PERBAIKAN: Pake backtick dan BASE_URL
-        const response = await fetch(`${BASE_URL}/api/projects`, {
+        const response = await fetch(`${BASE_URL}/api/dashboard/stats`, {
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+            headers: {
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+            }
         });
+
+        if (!response.ok) throw new Error("Gagal ambil data");
+
         const result = await response.json();
-        listContainer.innerHTML = '';
 
-        if (result.success && result.data.length > 0) {
-            result.data.forEach(p => {
-                const item = document.createElement('div');
-                item.className = 'proj-card';
-                item.innerHTML = `
-                    <h4>${p.judul}</h4>
-                    <p>${p.deskripsi}</p>
-                    <div class="proj-actions">
-                        <button class="btn-delete" onclick="deleteProject(${p.id})">Hapus</button>
-                    </div>
-                `;
-                listContainer.appendChild(item);
-            });
-        } else {
-            listContainer.innerHTML = '<p>Belum ada proyek.</p>';
+        if (result.success) {
+            // Tampilkan data ke HTML
+            document.getElementById('welcome-msg').innerText = `Selamat Datang, ${result.data.admin_name}!`;
+            document.getElementById('count-skills').innerText = result.data.skills_count;
+            document.getElementById('count-experience').innerText = result.data.experiences_count;
+            document.getElementById('count-projects').innerText = result.data.projects_count;
         }
     } catch (error) {
-        console.error("Gagal load proyek:", error);
+        console.error('Gagal ambil data:', error);
     }
-}
-
-document.getElementById('projectForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('token');
-    const saveBtn = document.getElementById('saveBtn');
-    
-    saveBtn.innerText = "Menyimpan...";
-    const payload = {
-        judul: document.getElementById('judul').value,
-        deskripsi: document.getElementById('deskripsi').value,
-        gambar_url: document.getElementById('gambar_url').value,
-        link_project: document.getElementById('link_project').value
-    };
-
-    try {
-        // PERBAIKAN: Pake backtick dan BASE_URL
-        const response = await fetch(`${BASE_URL}/api/projects`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-            body: JSON.stringify(payload)
-        });
-
-        if (response.ok) {
-            document.getElementById('projectForm').reset();
-            loadProjects();
-        } else {
-            alert("Gagal menambah proyek!");
-        }
-    } catch (error) {
-        console.error("Error save project:", error);
-    }
-    saveBtn.innerText = "Tambah Proyek 🚀";
 });
-
-async function deleteProject(id) {
-    if (!confirm('Hapus proyek ini?')) return;
-    const token = localStorage.getItem('token');
-    try {
-        // PERBAIKAN: Pake backtick dan BASE_URL
-        await fetch(`${BASE_URL}/api/projects/${id}`, { 
-            method: 'DELETE', 
-            headers: { 'Authorization': `Bearer ${token}` } 
-        });
-        loadProjects();
-    } catch (error) {
-        console.error("Error delete project:", error);
-    }
-}
 
 // Fitur Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-    if(confirm('Yakin mau keluar bro?')) {
+    if(confirm('Yakin mau keluar?')) {
+        localStorage.removeItem('token');
         try {
-            await fetch(`${BASE_URL}/api/logout`, { 
-                method: 'POST',
-                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-            });
+            await fetch(`${BASE_URL}/api/logout`, { method: 'POST' });
         } catch (e) {
-            console.error("Logout API failed, forcing local logout...");
-        } finally {
-            localStorage.removeItem('token');
-            alert('Logout berhasil!');
-            window.location.href = '/admin';
+            console.error("Logout API failed");
         }
+        alert('Logout berhasil!');
+        window.location.href = '/admin';
     }
 });
